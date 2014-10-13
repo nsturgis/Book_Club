@@ -1,0 +1,30 @@
+<h5> Create a Book </h5>
+<%= form_for @book do |f| %>
+ <% if @book.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@book.errors.count, "error") %> prohibited
+      this article from being saved:</h2>
+
+    <ul>
+      <% @book.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+<p>
+<%= f.label :title %>
+<%= f.text_field :title %><br>
+<%= f.label :author %>
+<%= f.text_field :author %><br>
+<%= f.label :year_published %>
+<%= f.text_field :year_published %><br>
+<%= f.label :description %>
+<%= f.text_area :description %><br>
+<%= f.label :category %>
+<%= f.text_field :category %>
+</p>
+<%= f.submit %>
+<% end %>
+
+<%= link_to "Back", books_path %>

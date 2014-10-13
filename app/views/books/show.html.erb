@@ -1,0 +1,31 @@
+<h1> <%= @book.title %> </h1>
+<h3> <%= @book.author %> </h3>
+<h4> <%= @book.year_published %> </h4>
+<h4> <%= @book.category %> </h4>
+<p>
+<%= @book.description %>
+</p>
+
+<h5> Reviews: </h5>
+<% @book.reviews.each do |review| %>
+<ul>
+<li>
+<%= review.rating %><br>
+<%= review.body %>
+</li>
+</ul>
+<% end %>
+<h5> Create a Review </h5>
+<%= form_for [@book, @reviews] do |f| %>
+<p>
+<%= f.label :rating %>
+<%= f.text_field :rating %>
+</p>
+<p>
+<%= f.label :body %>
+<%= f.text_area :body %>
+</p>
+<%= f.submit %>
+<% end %>
+
+<%= link_to "Back", books_path %>
